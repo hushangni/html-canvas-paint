@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas Fun</title>
+</head>
+<body>
+    <canvas height="500" width="500" id="canvas">
+        Pleaseee upgrade your browser! This is unsupported
+    </canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const pastels = ["#E3B6BF", "#C2ADC5", "#F5D8BB", "#FBF3BF", "#C8E2EB"];
+
+        const getRandomColor = () => {
+            // const red = Math.floor(Math.random()*256);
+            // const blue = Math.floor(Math.random()*256);
+            // const green = Math.floor(Math.random()*256);
+            const rand = Math.floor(Math.random() * pastels.length);
+            const rgb = `${pastels[rand]}`;
+            return rgb;
+        }
+        canvas.addEventListener('mousemove', (e) => {
+            console.log("clicked!");
+            const x = e.layerX;
+            const y = e.layerY;
+            ctx.beginPath();
+            ctx.fillStyle = getRandomColor();
+            ctx.arc(x, y, 50, 0, 2*Math.PI);
+            ctx.fill();
+            ctx.closePath();
+        });
+
+    </script>
+</body>
+</html>
